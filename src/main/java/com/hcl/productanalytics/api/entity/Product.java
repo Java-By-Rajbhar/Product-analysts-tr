@@ -20,5 +20,7 @@ public class Product implements Serializable {
 	private long id;
 	private String productName;
 	private String description;
+	private long categoryId;
+	private int likeCount;
 
 }

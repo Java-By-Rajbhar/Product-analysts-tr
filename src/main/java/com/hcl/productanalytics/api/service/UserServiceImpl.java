@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.hcl.productanalytics.api.customException.InvalidUserNameOrPasswordException;
 import com.hcl.productanalytics.api.dto.UserDto;
+import com.hcl.productanalytics.api.entity.ProductCategory;
 import com.hcl.productanalytics.api.entity.User;
 import com.hcl.productanalytics.api.repository.ProductCategoryRepository;
 import com.hcl.productanalytics.api.repository.UserRepository;
@@ -38,7 +39,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<?> userLogin(String emailId, String password) {
+	public List<ProductCategory> userLogin(String emailId, String password) {
 		
 		Optional<User> optional =  userRepository.findByEmailAndPassword(emailId, password);
 		if(optional.isPresent())
@@ -48,7 +49,7 @@ public class UserServiceImpl implements UserService {
 		}
 		else
 		{
-			throw new InvalidUserNameOrPasswordException(emailId+ "or "+password +" is invalid !!!");
+			throw new InvalidUserNameOrPasswordException(emailId+ " or "+password +" is invalid !!!");
 		}
 	}
 
