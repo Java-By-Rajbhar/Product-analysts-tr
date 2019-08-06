@@ -1,11 +1,13 @@
 package com.hcl.productanalytics.api.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hcl.productanalytics.api.customException.InvalidProductException;
+import com.hcl.productanalytics.api.dto.ProductDto;
 import com.hcl.productanalytics.api.entity.Product;
 import com.hcl.productanalytics.api.repository.ProductReposiroty;
 
@@ -29,6 +31,11 @@ public class ProductServiceImpl implements ProductService {
 		{
 			throw new InvalidProductException("Product id "+productId+" does not exist");
 		}
+	}
+	@Override
+	public List<ProductDto> getAnalyticsByProductId(long productId) {
+		
+		return productReposiroty.getAnalyticsByProductId(productId);
 	}
 
 
